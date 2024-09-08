@@ -22,7 +22,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        $clients = User::where('role', 'CLIENTE')->get();
+        return view('projects.create',compact('clients'));
     }
 
     /**
@@ -35,10 +36,10 @@ class ProjectController extends Controller
             'description' => 'required',
             'start_date' => 'date|required',
             'end_date' => 'date|after:start_date|required',
-            'user_id' => 'required|exists:users,id',
+            'client' => 'required|exists:users,id',
         ]);
 
-        $user = User::find($request->user_id);
+        $user = User::find($request->client);
         if($user->role !== Roles::CLI->value){
             return redirect()->back()->with('error', 'Somente clientes podem ser associados a projetos!');
         }
@@ -48,7 +49,7 @@ class ProjectController extends Controller
         $project->description = $request->description;
         $project->start_date = $request->start_date;
         $project->end_date = $request->end_date;
-        $project->user_id = $request->user_id;
+        $project->user_id = $request->client;
         $project->save();
 
         return redirect()->route('projects.index')->with('success','Projeto criado com sucesso!');
@@ -57,9 +58,10 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Project $project)
+    public function show(int $id)
     {
-        //
+        $project = Project::find($id);
+        return view('projects.show', compact('project'));
     }
 
     /**
@@ -80,10 +82,10 @@ class ProjectController extends Controller
             'description' => 'required',
             'start_date' => 'date|required',
             'end_date' => 'date|after:start_date|required',
-            'user_id' => 'required|exists:users,id',
+            'client' => 'required|exists:users,id',
         ]);
 
-        $user = User::find($request->user_id);
+        $user = User::find($request->client);
         if($user->role !== Roles::CLI->value){
             return redirect()->back()->with('error', 'Somente clientes podem ser associados a projetos!');
         }
@@ -92,7 +94,7 @@ class ProjectController extends Controller
         $project->description = $request->description;
         $project->start_date = $request->start_date;
         $project->end_date = $request->end_date;
-        $project->user_id = $request->user_id;
+        $project->user_id = $request->client;
         $project->save();
 
         return redirect()->route('projects.index')->with('success','Projeto editado com sucesso!');
