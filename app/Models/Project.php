@@ -11,6 +11,8 @@ class Project extends Model
 {
     use HasFactory;
 
+    protected $casts = ['start_date' => 'date', 'end_date' => 'date'];
+
     protected $fillable = [
         'title',
         'description',
@@ -19,8 +21,8 @@ class Project extends Model
         'user_id',
     ];
 
-    public function client() : BelongsTo{
-        return $this->belongsTo(User::class);
+    public function client(){
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function tasks(): HasMany {

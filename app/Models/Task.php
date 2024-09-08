@@ -18,10 +18,10 @@ class Task extends Model
     use HasFactory;
 
     public function responsible() : BelongsTo{
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function project() : BelongsTo{
-        return $this->belongsTo(Project::class);
+        return $this->belongsTo(Project::class, 'project_id');
     }
 }
