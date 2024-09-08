@@ -1,8 +1,8 @@
 <nav x-data="{ burguer: false }" class="bg-gray-600 shadow-lg relative">
     <div class="flex md:justify-around justify-center items-center">
-        <div class="logo w-32">
+        <div class="flex items-center">
             <a href="{{ route('home') }}">
-                <img src="https://infotech-solucoes.com/novo/public/img/logo_infotech.png" alt="">
+                <img class="w-32" src="https://infotech-solucoes.com/novo/public/img/logo_infotech.png" alt="">
             </a>
         </div>
         <div class="md:hidden flex">
@@ -14,8 +14,8 @@
                 </svg>
             </button>
         </div>
+        <!-- Menu Desktop -->
         <div class="hidden md:flex gap-5 text-gray-100">
-            <a href="{{ route('projects.index') }}" class="hover:text-gray-300 hover:border-b">Projetos</a>
             @auth
             <div x-data="{isOpen: false} " class="relative">
                 <button type="button" @click="isOpen = !isOpen" @click.outside="isOpen = false"
@@ -27,7 +27,7 @@
                             clip-rule="evenodd" />
                     </svg>
                 </button>
-                <div class="dropdown absolute bg-white text-black w-full z-30 flex flex-col border top-9" x-cloak
+                <div class="dropdown absolute bg-white text-black w-48 z-30 flex flex-col border top-9" x-cloak
                     x-show="isOpen" x-transition>
 
                     <a href="{{ route('dashboard') }}" class="p-2 hover:bg-gray-200">Painel de Admin</a>
@@ -39,7 +39,7 @@
                 </div>
             </div>
             @else
-            <a href="{{ route('login') }}" class="hover:text-gray-300 flex items-center gap-1">
+            <a href="{{ route('login') }}" class="hover:text-gray-300 hover:border-b flex items-center gap-1">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -52,7 +52,6 @@
     </div>
     <!-- Menu Mobile -->
     <div class="md:hidden flex flex-col text-gray-100 bg-gray-500 absolute w-full" x-cloak x-show="burguer" x-transition>
-        <a href="{{ route('projects.index') }}" class="hover:text-gray-300 hover:bg-gray-400 w-full p-2">Projetos</a>
         @auth
         <a href="{{ route('dashboard') }}" class="hover:bg-gray-400 w-full p-2">Painel de Admin</a>
         <form action="{{ route('logout') }}" method="POST">

@@ -18,7 +18,7 @@
         <div class="min-h-screen bg-gray-300">
             @include('layouts.navigation')
             <!-- Page Content -->
-            <main>
+            <main class="md:w-9/12 m-auto md:py-12">
                 {{ $slot }}
             </main>
         </div>
