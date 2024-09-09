@@ -24,7 +24,7 @@
         <div class="flex md:flex-row flex-col md:gap-0 gap-3 items-center justify-between mb-5">
             <h2 class="text-lg font-bold">Tarefas</h2>
             @can('isAdmin', 'App\Models\User')
-            <a href="{{ route('tasks.create') }}"
+            <a href="{{ route('tasks.create',$project->id) }}"
                 class="bg-green-400 bg-opacity-80 hover:bg-green-500 transition py-1 px-3 rounded-lg flex items-center gap-1 md:w-fit w-full justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                     <path fill-rule="evenodd"
