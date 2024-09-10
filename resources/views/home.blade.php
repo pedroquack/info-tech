@@ -9,9 +9,9 @@
             <p class="break-words">{{ $p->description }}</p>
             <div class="flex md:flex-row flex-col justify-between items-center">
                 <div class="font-bold">{{ $p->start_date->format('d/m/Y') }} - {{ $p->end_date->format('d/m/Y') }}</div>
-                <a href="{{ route('projects.show', $p) }}" class="font-bold shadow-md bg-gray-400 md:w-fit w-full text-center py-2 px-8 rounded-md hover:bg-gray-500 transition">Visualizar</a>
+                <a href="{{ route('projects.show', $p) }}" class="font-bold shadow-md bg-green-300 md:w-fit w-full text-center py-2 px-8 rounded-md hover:bg-green-400 transition">Visualizar</a>
             </div>
-            <hr>
+            <hr class="border border-gray-300">
             @endforeach
         </div>
     </div>
