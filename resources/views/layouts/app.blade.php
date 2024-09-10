@@ -19,6 +19,7 @@
             @include('layouts.navigation')
             <!-- Page Content -->
             <main class="md:w-9/12 m-auto md:py-12">
+                <x-flash-message></x-flash-message>
                 {{ $slot }}
             </main>
         </div>
