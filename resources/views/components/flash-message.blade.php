@@ -16,8 +16,13 @@
                 clip-rule="evenodd" />
         </svg>
         @endif
-        <span class="text-black font-bold text-xl">@if(session()->get('success')) {{ session()->get('success') }} @else
-            {{ session()->get('error') }} @endif</span>
+        <span class="text-black font-bold text-xl">
+            @if(session()->get('success'))
+                {{ session()->get('success') }}
+            @else
+                {{ session()->get('error') }}
+            @endif
+        </span>
     </div>
 </div>
 @endif
