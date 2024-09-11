@@ -88,7 +88,7 @@
                             </p>
                             </button>
                             <!-- Modal para exibir a descrição completa da tarefa -->
-                            <div x-cloak x-show="isOpen"
+                            <div x-show="isOpen" x-cloak
                                 class="bg-black bg-opacity-20 absolute w-full h-full top-0 left-0 p-48">
                                 <div class="bg-white p-8 rounded" x-cloak x-show="isOpen" x-transition
                                     @click.outside="isOpen = false">

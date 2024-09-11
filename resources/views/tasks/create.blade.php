@@ -30,7 +30,7 @@
                     <option value="{{ $adm->id }}">{{ $adm->name }}</option>
                     @endforeach
                 </x-select>
-                @error('client')
+                @error('responsible')
                 <span class="text-red-500">{{ $message }}</span>
                 @enderror
         </div>
