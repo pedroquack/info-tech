@@ -2,7 +2,7 @@
     <div class="flex md:justify-around justify-center items-center">
         <div class="flex items-center">
             <a href="{{ route('home') }}">
-                <img class="w-32" src="https://infotech-solucoes.com/novo/public/img/logo_infotech.png" alt="">
+                <img class="w-32" src="{{ asset('img/logo_infotech.png') }}" alt="">
             </a>
         </div>
         <div class="md:hidden flex">
