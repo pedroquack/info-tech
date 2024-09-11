@@ -42,12 +42,12 @@
         </div>
         <div class="flex flex-col w-full">
             <x-input-label>Cliente*</x-label>
-                <x-select name="client">
+                <x-select name="client_id">
                     @foreach ($clients as $c)
                     <option @if($c->id == $project->user_id) {{ "selected" }} @endif value="{{ $c->id }}" >{{ $c->name }}</option>
                     @endforeach
                 </x-select>
-                @error('client')
+                @error('client_id')
                 <span class="text-red-500">{{ $message }}</span>
                 @enderror
         </div>

@@ -205,7 +205,7 @@ return [
         'category' => 'categoria',
         'blood_type' => 'tipo sanguíneo',
         'birth_date' => 'data de nascimento',
-        'client' => 'cliente',
+        'client_id' => 'cliente',
         'responsible' => 'usuário responsável',
         'start_date' => 'data de inicio',
         'end_date' => 'data de término'

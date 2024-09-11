@@ -18,12 +18,12 @@ class Project extends Model
         'description',
         'start_date',
         'end_date',
-        'user_id',
+        'client_id',
     ];
 
     public function client(){
         //Define a relação entre projeto e cliente
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'client_id');
     }
 
     public function tasks(): HasMany {
