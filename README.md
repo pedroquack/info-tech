@@ -1,24 +1,26 @@
 # Como rodar na sua máquina:
 
 1. Certifique-se de possuir composer, apache, mysql e php instalados na maquina
-2. Em um terminal apontando para dentro do diretório do projeto execute o seguinte comando:
+2. Faça uma copia do arquivo `.env.example` e renomeie para `.env`
+3. Dentro do arquivo `.env` substitua os valores de `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME` e `DB_PASSWORD` de modo que entre de acordo com seu banco de dados
+4. Em um terminal apontando para dentro do diretório do projeto execute o seguinte comando:
    ```   
     composer install
    ```
-3. Executar:
+5. Executar:
    ```
     php artisan key:generate
    ```
 
-4. Executar:
+6. Executar:
     ```
     php artisan migrate --seed
     ```
-5. Executar:
+7. Executar:
     ```
     php artisan serve --port=8000
     ```
-6. Agora basta acessar localhost:8000
+8. Agora basta acessar localhost:8000
 
 ## Autenticação
 * Será criado um usuário inicial com cargo ADMIN, para se autenticar utilizar as seguintes credenciais:\
