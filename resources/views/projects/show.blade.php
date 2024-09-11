@@ -61,6 +61,7 @@
             </a>
             @endcan
         </div>
+        <hr>
         @if($project->tasks->count() > 0)
         <!-- Tabela de Tarefas em Desktop -->
         <div class="overflow-auto rounded-lg shadow md:block hidden">
@@ -171,7 +172,7 @@
             @endforeach
         </div>
         @else
-            <h4 class="text-center md:text-start">Nenhuma tarefa adicionada!</span>
+            <h4 class="mt-3 text-center md:text-start">Nenhuma tarefa adicionada!</span>
         @endif
     </div>
 </x-app-layout>
