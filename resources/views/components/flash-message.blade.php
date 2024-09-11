@@ -1,7 +1,7 @@
 @if(session()->has('success') || session()->has('error'))
-<div class="fixed bg-black flex flex-col items-center bg-opacity-30 top-0 left-0 w-full h-full p-16" x-cloak
+<div class="fixed bg-black flex flex-col items-center bg-opacity-30 top-0 left-0 w-full h-full md:p-16 p-4" x-cloak
     x-data="{message: true}" x-show="message">
-    <div class="bg-white w-fit p-4 flex items-center justify-center gap-3 rounded-lg @if(session()->get('success')) text-green-400 @else text-red-400 @endif "
+    <div class="bg-white md:w-fit w-11/12 p-4 flex items-center justify-center gap-3 rounded-lg @if(session()->get('success')) text-green-400 @else text-red-400 @endif "
         x-cloak x-show="message" x-transition @click.outside="message = false">
         @if (session()->get('success'))
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-12">

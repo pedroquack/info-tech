@@ -109,6 +109,12 @@ class TaskController extends Controller
 
         //Recupera a tarefa passada no corpo da requisição e edita seus dados
         $task = Task::find($request->task_id);
+
+        //Se a tarefa não existir, retorna uma mensagem de erro
+        if(!isset($task)){
+            return redirect()->back()->with('error','A tarefa especificada não existe');
+        }
+
         $task->title = $request->title;
         $task->description = $request->description;
         //Checa se o usuário autenticado é o responsável pela tarefa
@@ -136,7 +142,10 @@ class TaskController extends Controller
         if(!isset($task)){
             return redirect()->back()->with('error','A tarefa especificada não existe');
         }
+
+        //Deleta a tarefa
         $task->delete();
+
         //Redireciona para a pagina do projeto
         return redirect()->route('projects.show',$task->project_id)->with('success', 'Tarefa excluída com sucesso!');
     }

@@ -145,11 +145,16 @@
                     {{ $task->responsible->name }}
                 </span>
                 <div class="bg-gray-200 shadow-lg rounded-b-lg">
+
                     <div class="p-4 flex items-center justify-between gap-3 flex-wrap">
                         <h3 class="font-semibold">{{ $task->title }}</h3>
                         <span
                             class="p-1.5 text-xs font-bold uppercase tracking-wider rounded-lg bg-opacity-80 @if($task->status == "CONCLUIDO") bg-green-400 text-green-900 @else bg-yellow-200 text-yellow-900 @endif">{{
                             $task->status }}</span>
+                    </div>
+
+                    <div class="p-4 bg-white">
+                        <p class="break-words">{{ $task->description }}</p>
                     </div>
                     @can('isAdmin','App\Models\User')
                     <div class="flex">
@@ -164,11 +169,9 @@
                         </form>
                     </div>
                     @endcan
-                    <div class="p-4 bg-white">
-                        <p class="break-words">{{ $task->description }}</p>
-                    </div>
                 </div>
             </div>
+            <hr class="border-2 border-gray-300">
             @endforeach
         </div>
         @else

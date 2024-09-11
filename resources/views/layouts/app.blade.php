@@ -1,3 +1,5 @@
+@props(['padding' => 'md:py-12'])
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -19,7 +21,7 @@
         <div class="min-h-screen bg-gray-300">
             @include('layouts.navigation')
             <!-- Page Content -->
-            <main class="md:w-9/12 m-auto md:py-12">
+            <main class="md:w-9/12 m-auto {{ $padding }}">
                 <x-flash-message></x-flash-message>
                 {{ $slot }}
             </main>

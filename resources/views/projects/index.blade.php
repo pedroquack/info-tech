@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="bg-gray-400 p-5 md:rounded-t-lg shadow-lg flex items-center justify-between">
+    <div class="bg-gray-400 p-5 md:rounded-t-lg shadow-lg flex md:flex-row flex-col items-center justify-between">
         <h1 class="text-xl font-bold">Todos os projetos</h1>
         <a class="bg-green-400 py-2 px-6 rounded-lg shadow hover:bg-green-500 transition flex items-center justify-center gap-2" href="{{ route('projects.create') }}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
@@ -14,7 +14,7 @@
         <div class="flex flex-col gap-3">
             @if ($projects->count() > 0)
                 @foreach ($projects as $p)
-                <div>
+                <div class="md:text-start text-center">
                     <div class="flex md:flex-row flex-col justify-between items-center">
                         <h1 class="font-bold text-lg">{{ $p->title }}</h1>
                         <h2 class="font-bold">Cliente: <span class="font-normal text-sm">{{ $p->client->name }}</span></h2>

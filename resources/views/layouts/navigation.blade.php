@@ -27,14 +27,16 @@
                             clip-rule="evenodd" />
                     </svg>
                 </button>
-                <div class="dropdown absolute bg-white text-black w-48 z-30 flex flex-col border top-9" x-cloak
+                <div class="dropdown absolute bg-white rounded-lg text-black w-48 z-30 flex flex-col border top-9" x-cloak
                     x-show="isOpen" x-transition>
 
-                    <a href="{{ route('dashboard') }}" class="p-2 hover:bg-gray-200">Painel de Admin</a>
-
+                    @can('isAdmin','App\Models\User')
+                    <a href="{{ route('users.index') }}" class="p-2 rounded-lg hover:bg-gray-200">Usuários</a>
+                    <a href="{{ route('projects.index') }}" class="p-2 rounded-lg hover:bg-gray-200">Projetos</a>
+                    @endif
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button type="submit" class="text-start p-2 hover:bg-gray-200 w-full">Sair</button>
+                        <button type="submit" class="text-start p-2 rounded-lg hover:bg-gray-200 w-full">Sair</button>
                     </form>
                 </div>
             </div>
@@ -53,7 +55,10 @@
     <!-- Menu Mobile -->
     <div class="md:hidden flex flex-col text-gray-100 bg-gray-500 absolute w-full" x-cloak x-show="burguer" x-transition>
         @auth
-        <a href="{{ route('dashboard') }}" class="hover:bg-gray-400 w-full p-2">Painel de Admin</a>
+        @can('isAdmin','App\Models\User')
+            <a href="{{ route('users.index') }}" class="hover:bg-gray-400 w-full p-2">Usuários</a>
+            <a href="{{ route('projects.index') }}" class="hover:bg-gray-400 w-full p-2">Projetos</a>
+        @endcan
         <form action="{{ route('logout') }}" method="POST">
             @csrf
             <button type="submit" class="text-start hover:bg-gray-400 w-full p-2">Sair</button>

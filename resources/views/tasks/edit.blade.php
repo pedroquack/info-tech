@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="bg-gray-400 p-5 md:rounded-t-lg shadow-lg">
-        <h1 class="text-xl font-bold">Criar uma tarefa</h1>
+        <h1 class="text-xl font-bold">Editar tarefa</h1>
     </div>
     <form action="{{ route('tasks.update',$task->id) }}" method="post" class="flex flex-col gap-3 bg-white p-5">
         @csrf
@@ -39,7 +39,7 @@
                 <x-input-label>Responsavel*</x-label>
                     <x-select name="responsible">
                         @foreach ($admins as $adm)
-                        <option value="{{ $adm->id }}" @if($task->responsible === $adm->id) selected @endif>{{ $adm->name }}</option>
+                        <option value="{{ $adm->id }}" @if($task->responsible->id == $adm->id) selected @endif>{{ $adm->name }}</option>
                         @endforeach
                     </x-select>
                     @error('client')

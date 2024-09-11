@@ -18,6 +18,7 @@ class ProjectController extends Controller
         //Recupera todos os projetos
         $projects = Project::all();
 
+        //Retorna a listagem de projetos
         return view('projects.index', compact('projects'));
     }
 
@@ -28,12 +29,16 @@ class ProjectController extends Controller
         Gate::authorize('isAdmin', User::class);
         //Recupera todos os usuários cadastrados como CLIENTE, para exibir no select do formulário
         $clients = User::where('role', 'CLIENTE')->get();
+        //Exibe o formulario de criação de projeto
         return view('projects.create',compact('clients'));
     }
 
     //Valida e armazena um projeto
     public function store(Request $request)
     {
+        //Controle de acesso para admins
+        Gate::authorize('isAdmin', User::class);
+
         //Faz a validações dos campos vindos da requisição
         $request->validate([
             'title' => 'required|max:255',
@@ -68,7 +73,6 @@ class ProjectController extends Controller
     //Exibe um projeto especifico
     public function show(int $id)
     {
-
         //Recupera o projeto pelo id passado no corpo da requisição
         $project = Project::find($id);
 
@@ -96,6 +100,7 @@ class ProjectController extends Controller
         $project = Project::find($id);
         //Recupera todos os usuários cadastrados como CLIENTE, para exibir no select do formulário
         $clients = User::where('role', 'CLIENTE')->get();
+        //Exibe o formulario de edição do projeto especificado
         return view('projects.edit',compact('clients','project'));
     }
 
@@ -140,14 +145,16 @@ class ProjectController extends Controller
         $project->user_id = $request->client;
         $project->save();
 
+        //Retorna para rota de exibição do projeto editado
         return redirect()->route('projects.show', $project->id)->with('success','Projeto editado com sucesso!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    //Deleta um projeto especifico
     public function destroy(int $id)
     {
+        //Controle de acesso para admins
+        Gate::authorize('isAdmin', User::class);
+
         //Recupera o projeto pelo id passado no corpo da requisição
         $project = Project::find($id);
         //Testa se o projeto existe
@@ -155,6 +162,8 @@ class ProjectController extends Controller
             //Se não existe, retorna uma mensagem de erro
             return redirect()->back()->with('error','O projeto especificado não existe!');
         }
+        //Deleta o projeto
+        $project->delete();
         return redirect()->route('projects.index')->with('success','Projeto excluído com sucesso!');
     }
 }

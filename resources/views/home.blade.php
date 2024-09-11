@@ -6,7 +6,7 @@
         @if ($projects->count() > 0)
         <div class="flex flex-col gap-2">
             @foreach ($projects as $p)
-            <div>
+            <div class="md:text-start text-center">
                 <h1 class="font-bold text-lg">{{ $p->title }}</h1>
                 <p class="break-words">{{ $p->description }}</p>
                 <div class="flex md:flex-row flex-col justify-between items-center">

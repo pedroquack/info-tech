@@ -22,10 +22,12 @@ class Project extends Model
     ];
 
     public function client(){
+        //Define a relação entre projeto e cliente
         return $this->belongsTo(User::class, 'user_id');
     }
 
     public function tasks(): HasMany {
-        return $this->hasMany(Task::class);
+        //Define a relação entre projeto e tarefas, e ordena as tarefas pendentes na frente
+        return $this->hasMany(Task::class)->orderBy('status','asc');
     }
 }
