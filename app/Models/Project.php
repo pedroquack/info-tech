@@ -28,6 +28,6 @@ class Project extends Model
 
     public function tasks(): HasMany {
         //Define a relação entre projeto e tarefas, e ordena as tarefas pendentes na frente
-        return $this->hasMany(Task::class)->orderBy('status','asc');
+        return $this->hasMany(Task::class)->orderBy('status','asc')->orderBy('created_at');
     }
 }
