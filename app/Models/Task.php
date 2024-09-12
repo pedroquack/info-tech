@@ -12,14 +12,15 @@ class Task extends Model
         'title',
         'description',
         'status',
-        'user_id',
+        'responsible_id',
+        'project_id',
     ];
 
     use HasFactory;
 
     public function responsible() : BelongsTo{
         //Define a relação entre tarefa e responsável
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'responsible_id');
     }
 
     public function project() : BelongsTo{

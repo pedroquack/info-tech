@@ -37,12 +37,12 @@
             @endcan
             <div class="flex flex-col w-full">
                 <x-input-label>Responsavel*</x-label>
-                    <x-select name="responsible">
+                    <x-select name="responsible_id">
                         @foreach ($admins as $adm)
                         <option value="{{ $adm->id }}" @if($task->responsible->id == $adm->id) selected @endif>{{ $adm->name }}</option>
                         @endforeach
                     </x-select>
-                    @error('client')
+                    @error('responsible_id')
                     <span class="text-red-500">{{ $message }}</span>
                     @enderror
             </div>

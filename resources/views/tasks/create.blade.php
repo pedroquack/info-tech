@@ -24,13 +24,13 @@
         </div>
         <div class="flex flex-col w-full">
             <x-input-label>Responsavel*</x-label>
-                <x-select name="responsible">
+                <x-select name="responsible_id">
                     <option value="" selected>Selecione um responsável</option>
                     @foreach ($admins as $adm)
                     <option value="{{ $adm->id }}">{{ $adm->name }}</option>
                     @endforeach
                 </x-select>
-                @error('responsible')
+                @error('responsible_id')
                 <span class="text-red-500">{{ $message }}</span>
                 @enderror
         </div>

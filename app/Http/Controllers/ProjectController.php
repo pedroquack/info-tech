@@ -90,7 +90,6 @@ class ProjectController extends Controller
         //Controle de acesso para admins e para o cliente do projeto
         Gate::authorize('show',$project, Project::class);
 
-
         //Retorna a view contendo as informações do projeto
         return view('projects.show', compact('project'));
     }
