@@ -1,6 +1,6 @@
 # Como rodar na sua máquina:
 
-1. Certifique-se de possuir composer, apache, mysql e php instalados na maquina
+1. Certifique-se de possuir `composer`, `apache`, `mysql` e `php 8.2` instalados na maquina
 2. Faça uma copia do arquivo `.env.example` e renomeie para `.env`
 3. Dentro do arquivo `.env` substitua os valores de `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME` e `DB_PASSWORD` de modo que entre de acordo com seu banco de dados
 4. Em um terminal apontando para dentro do diretório do projeto execute o seguinte comando:
