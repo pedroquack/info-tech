@@ -31,11 +31,14 @@ class UserRepository implements UserRepositoryInterface
 
     public function create(array $data)
     {
+        $data['password'] = bcrypt($data['password']);
+        $data['role'] = Roles::from($data['role']);
         return User::create($data);
     }
 
     public function update(int $id, array $data)
     {
+        $data['role'] = Roles::from($data['role']);
         $user = $this->findById($id);
         if ($user) {
             $user->update($data);

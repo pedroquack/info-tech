@@ -13,6 +13,10 @@ class ProjectRepository implements ProjectRepositoryInterface
         return Project::all();
     }
 
+    public function getByClient(int $client_id){
+        return Project::where('client_id', $client_id)->get();
+    }
+
     public function findById(int $id)
     {
         return Project::find($id);
