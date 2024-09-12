@@ -4,7 +4,7 @@
 2. Clone o repositório na sua máquina
 3. Dentro do diretório do projeto faça uma copia do arquivo `.env.example` e renomeie para `.env`
 4. Dentro do arquivo `.env` substitua os valores de `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME` e `DB_PASSWORD` de modo que entre de acordo com seu banco de dados
-5. No terminal, pdentro do diretório do projeto execute o comando para baixar todas as dependências:
+5. No terminal, dentro do diretório do projeto execute o comando para baixar todas as dependências:
    ```   
     composer install
    ```
