@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SiteController;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 //Grupo de rotas que só são possiveis de ser acessadas por usuários autenticados
 Route::middleware('auth')->group(function () {
     Route::get('/', [SiteController::class, 'home'])->name('home');
+    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
     //Projetos
     Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
@@ -40,4 +42,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/users/{id}',[SiteController::class, 'destroy_user'])->name('users.destroy');
 });
 
-require __DIR__.'/auth.php';
+//Grupo de rotas para usuários não autenticados, não permitindo que usuários autenticados acessem
+Route::middleware('guest')->group(function () {
+    Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
+    Route::post('login', [AuthenticatedSessionController::class, 'store']);
+
+});
+
+
