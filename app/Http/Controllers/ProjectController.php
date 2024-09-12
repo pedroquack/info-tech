@@ -17,6 +17,7 @@ class ProjectController extends Controller
     protected $userRepository;
 
     public function __construct(ProjectRepositoryInterface $projectRepository, UserRepositoryInterface $userRepository){
+        //Injeção de depêndencia dos repositories
         $this->projectRepository = $projectRepository;
         $this->userRepository = $userRepository;
     }

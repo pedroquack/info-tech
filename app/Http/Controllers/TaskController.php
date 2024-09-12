@@ -24,18 +24,19 @@ class TaskController extends Controller
 
     public function __construct(TaskRepositoryInterface $taskRepository, UserRepositoryInterface $userRepository, ProjectRepositoryInterface $projectRepository)
     {
+        //Executa a injeção de depêndencia dos repositories
         $this->taskRepository = $taskRepository;
         $this->userRepository = $userRepository;
         $this->projectRepository = $projectRepository;
+
+        //Controle de acesso para admins
+        Gate::authorize('isAdmin', User::class);
     }
 
     //GET tasks/create
     //Exibe o formulário de criação da tarefa
     public function create(int $project_id)
     {
-        //Controle de acesso para admins
-        Gate::authorize('isAdmin',User::class);
-
         //Recupera o projeto passado no corpo da requisição
         $project = $this->projectRepository->findById($project_id);
         //Se o projeto não existir, retorna uma mensagem de erro
@@ -53,9 +54,6 @@ class TaskController extends Controller
     //Cria uma tarefa
     public function store(Request $request)
     {
-        //Controle de acesso para admins
-        Gate::authorize('isAdmin',User::class);
-
         //Valida os dados vindos na requisição
         $taskData = $request->validate([
             'title' => 'required|max:255',
@@ -82,9 +80,6 @@ class TaskController extends Controller
     //Exibe o formulário de edição da tarefa
     public function edit(int $id)
     {
-        //Controle de acesso para admins
-        Gate::authorize('isAdmin',User::class);
-
         //Recupera a tarefa passada no corpo da requisição
         $task = $this->taskRepository->findById($id);
         if(!isset($task)){
@@ -100,9 +95,6 @@ class TaskController extends Controller
     //Atualiza uma tarefa
     public function update(Request $request)
     {
-        //Controle de acesso para admins
-        Gate::authorize('isAdmin',User::class);
-
         //Valida os dados vindos na requisição
         $taskData = $request->validate([
             'title' => 'required|max:255',
@@ -136,9 +128,6 @@ class TaskController extends Controller
     //Deleta uma tarefa
     public function destroy(int $id)
     {
-        //Controle de acesso para admins
-        Gate::authorize('isAdmin',User::class);
-
         //Recupera a tarefa passada no corpo da requisição
         $task = $this->taskRepository->findById($id);
         //Se a tarefa não existir, retorna uma mensagem de erro

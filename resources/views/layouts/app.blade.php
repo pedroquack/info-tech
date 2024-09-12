@@ -21,7 +21,7 @@
         <div class="min-h-screen bg-gray-300">
             @include('layouts.navigation')
             <!-- Page Content -->
-            <main class="md:w-9/12 m-auto {{ $padding }}">
+            <main class="md:w-9/12 m-auto flex flex-col justify-center {{ $padding }}">
                 <x-flash-message></x-flash-message>
                 {{ $slot }}
             </main>
